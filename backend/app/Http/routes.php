@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/balik-kalimat', 'HomeController@balikKalimat')->name('balik-kalimat');
+Route::post('/balik-kalimat-proses', 'HomeController@balikKalimatProses')->name('balik-kalimat-proses');
