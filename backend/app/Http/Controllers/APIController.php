@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Requests\SignupRequest;
 use App\User;
 use Hash;
 use JWTAuth;
@@ -9,12 +10,13 @@ class APIController extends Controller
 {
 	
 
-    public function register(Request $request)
+    public function register(SignupRequest $request)
     {        
     	$input = $request->all();
     	$input['password'] = Hash::make($input['password']);
     	User::create($input);
-        return response()->json(['result'=>true]);
+        // return response()->json(['result'=>true]);
+        return $this->login($request);
     }
     
 
@@ -22,7 +24,7 @@ class APIController extends Controller
     {
     	$input = $request->all();
     	if (!$token = JWTAuth::attempt($input)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Email atau password yang Anda masukkan salah'], 401);
         }
         return $this->respondWithToken($token);
     }

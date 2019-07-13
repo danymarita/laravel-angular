@@ -22,7 +22,7 @@ Route::get('/balik-kalimat', 'HomeController@balikKalimat')->name('balik-kalimat
 Route::post('/balik-kalimat-proses', 'HomeController@balikKalimatProses')->name('balik-kalimat-proses');
 
 Route::group([
-    'middleware' => ['api','cors'],
+    'middleware' => ['cors','api'],
     'prefix' => 'api'
 ], function ($router) {
     Route::post('register', 'APIController@register');
@@ -31,5 +31,7 @@ Route::group([
         Route::post('get_user_details', 'APIController@get_user_details');
         Route::get('refresh', 'APIController@refresh');
         Route::get('logout', 'APIController@logout');
+        // Route::resource('book/{id}/update', 'BookController@update');
+        Route::resource('book', 'BookController');
     });
 });

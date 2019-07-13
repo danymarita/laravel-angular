@@ -1,0 +1,47 @@
+<div class="mt-4 col-8 offset-2">
+    <div class="card text-white bg-dark">
+        <div class="card-header">
+            {{ formTitle }}
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="alert alert-success" *ngIf="infoMsg">
+                    {{ infoMsg }}
+                </div>
+                <div class="alert alert-danger" *ngIf="errorMsg">
+                    {{ errorMsg }}
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">ISBN</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="isbn" placeholder="Masukan ISBN" class="form-control" [(ngModel)]="book.isbn" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Judul</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="title" placeholder="Masukan Judul" class="form-control" [(ngModel)]="book.title" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Pengarang</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="author" placeholder="Masukan Pengarang" class="form-control" [(ngModel)]="book.author" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Summary</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="description" [(ngModel)]="book.description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-2">
+                        <button type="button" (click)="addBook()" class="btn btn-primary">Submit</button>
+                        <a href="#" (click)="goBack($event)" class="btn btn-warning ml-2">Kembali</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
