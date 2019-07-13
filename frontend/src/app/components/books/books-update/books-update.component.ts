@@ -22,7 +22,7 @@ export class BooksUpdateComponent implements OnInit {
   infoMsg: string;
   errorMsg: string;
   selectedId: number;
-  error: null
+  error: null;
 
   constructor(
     private httpCall: HttpCallService,
