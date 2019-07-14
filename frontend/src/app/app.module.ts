@@ -20,6 +20,7 @@ import { BooksIndexComponent } from './components/books/books-index/books-index.
 import { BooksAddComponent } from './components/books/books-add/books-add.component';
 import { BooksUpdateComponent } from './components/books/books-update/books-update.component';
 import { BooksServiceService } from './Services/books-service.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BooksServiceService } from './Services/books-service.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [HttpCallService, TokenService, AuthService, AfterLoginService, BeforeLoginService, BooksServiceService],
   bootstrap: [AppComponent]

@@ -17,13 +17,6 @@ export class BooksServiceService {
     private httpCall: HttpCallService
   ) { }
 
-  getBooks() {
-    this.httpCall.getBooks(this.Token.get()).subscribe(
-      data => data,
-      error => this.handleError(error)
-    );
-  }
-
   handleError(error){
     this.error = error.error.error;
   }

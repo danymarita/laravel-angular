@@ -18,8 +18,8 @@ export class HttpCallService {
     return this.http.post(this.base_url+'/login', data)
   }
 
-  getBooks(token) {
-    return this.http.get(this.base_url+'/book?token='+token)
+  getBooks(token, page) {
+    return this.http.get(this.base_url+'/book?token='+token+'&page='+page)
   }
 
   getBookById(token, id) {

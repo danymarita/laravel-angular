@@ -12,17 +12,17 @@
                         <th>ISBN</th>
                         <th>Judul</th>
                         <th>Pengarang</th>
-                        <th>Summary</th>
+                        <!-- <th>Summary</th> -->
                         <!-- <th>Tgl. Input</th> -->
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let book of books; let i= index;">
-                            <td>{{ i+1 }}</td>
+                        <tr *ngFor="let book of books; let i = index;">
+                            <td>{{ offset + i }}</td>
                             <td>{{ book.isbn }}</td>
                             <td>{{ book.title }}</td>
                             <td>{{ book.author }}</td>
-                            <td>{{ book.description }}</td>
+                            <!-- <td>{{ book.description }}</td> -->
                             <!-- <td>{{ book.created_at }}</td> -->
                             <td>
                                 <a href="#" (click)="editBook($event, book)" class="btn btn-warning">Edit</a>
@@ -32,6 +32,21 @@
                             </td>
                         </tr>
                     </tbody>
+                    <tfoot>  
+                        <tr>  
+                            <td align="center" colspan="6">
+                                <div class="pull-right">  
+                                    <ngb-pagination [collectionSize]="collectionSize" 
+                                    [pageSize]="pageSize" 
+                                    [(page)]="page" 
+                                    [maxSize]="maxSize" 
+                                    [rotate]="true" 
+                                    [boundaryLinks]="boundaryLinks" 
+                                    (pageChange)="loadPage($event)"></ngb-pagination>  
+                                </div>  
+                            </td>  
+                        </tr>  
+                    </tfoot>
                 </table>
             </div>
         </div>

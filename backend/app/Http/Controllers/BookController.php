@@ -17,8 +17,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $result = Books::all();
-        return $result;
+        $result = Books::query();
+        return $result->paginate(10);
     }
 
     /**

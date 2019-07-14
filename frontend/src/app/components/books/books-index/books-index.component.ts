@@ -15,20 +15,27 @@ export class BooksIndexComponent implements OnInit {
   infoMsg: string;
   errorMsg: string;
   error: null;
+  page = 1;
+  collectionSize: number;
+  boundaryLinks = true;
+  maxSize = 5;
+  pageSize: number;
+  previousPage: number;
+  offset: number;
 
   constructor(
     private router: Router,
     private Token: TokenService,
     private httpCall: HttpCallService,
     private Auth: AuthService,
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.getBooks();
+    this.getBooks(1);
   }
 
-  getBooks() {
-    this.httpCall.getBooks(this.Token.get()).subscribe(
+  getBooks(page) {
+    this.httpCall.getBooks(this.Token.get(), page).subscribe(
       // error => this.handleError(error),
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -52,7 +59,10 @@ export class BooksIndexComponent implements OnInit {
       }
     }
 
-    this.books = data
+    this.books = data.data
+    this.collectionSize = data.total
+    this.pageSize = data.per_page
+    this.offset = (this.page - 1) * this.pageSize + 1 
   }
 
   handleError(error) {
@@ -80,6 +90,14 @@ export class BooksIndexComponent implements OnInit {
       }
     }
 
-    this.books = data.data
+    // this.books = data.data
+    this.getBooks(1);
+  }
+  
+  loadPage(page: number) {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.getBooks(page);
+    }
   }
 }
