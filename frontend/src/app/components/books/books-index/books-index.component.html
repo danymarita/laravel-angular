@@ -1,7 +1,7 @@
 <div class="row">
     <div class="mt-4 col-12">
         <div class="card text-white bg-dark">
-            <div class="card-header">Form Login</div>
+            <div class="card-header">{{ title }}</div>
             <div class="card-body bg-light">
                 <div class="alert alert-success" *ngIf="infoMsg">{{ infoMsg }}</div>
                 <div class="alert alert-success" *ngIf="errorMsg">{{ infoMsg }}</div>
@@ -19,7 +19,8 @@
                     <tbody>
                         <tr *ngFor="let book of books; let i = index;">
                             <td>{{ offset + i }}</td>
-                            <td>{{ book.isbn }}</td>
+                            <!-- <td>{{ book.isbn }}</td> -->
+                            <td><a href="#" (click)="detailBook($event, book)">{{ book.isbn }}</a></td>
                             <td>{{ book.title }}</td>
                             <td>{{ book.author }}</td>
                             <!-- <td>{{ book.description }}</td> -->

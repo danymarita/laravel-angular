@@ -13,10 +13,6 @@ import { Location } from '@angular/common';
 })
 export class BooksUpdateComponent implements OnInit {
 
-  // isbn: string;
-  // title: string;
-  // author: string;
-  // description: string;
   book: Books;
   formTitle: string;
   infoMsg: string;

@@ -9,6 +9,7 @@ import { BeforeLoginService } from './Services/before-login.service';
 import { BooksIndexComponent } from './components/books/books-index/books-index.component';
 import { BooksAddComponent } from './components/books/books-add/books-add.component';
 import { BooksUpdateComponent } from './components/books/books-update/books-update.component';
+import { BooksDetailComponent } from './components/books/books-detail/books-detail.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
     canActivate: [AfterLoginService]
   },
   { path: 'book/add', canActivate: [ AfterLoginService ], component: BooksAddComponent },
-  { path: 'book/update/:id', canActivate: [ AfterLoginService ], component: BooksUpdateComponent }
+  { path: 'book/update/:id', canActivate: [ AfterLoginService ], component: BooksUpdateComponent },
+  { path: 'book/detail/:id', canActivate: [ AfterLoginService ], component: BooksDetailComponent }
 ];
 
 @NgModule({

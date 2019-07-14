@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Books;
+use JWTAuth;
 
 class BookController extends Controller
 {
@@ -17,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $result = Books::query();
+        $result = Books::with('created_by','updated_by');
         return $result->paginate(10);
     }
 
@@ -39,6 +38,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $user = JWTAuth::parseToken()->toUser();
         $data = json_decode($request->getContent(), true);
         $book = new Books();
 
@@ -47,6 +47,8 @@ class BookController extends Controller
         $book->title = $data['title'];
         $book->author = $data['author'];
         $book->description = $data['description'];
+        $book->created_by = $user->id;
+        $book->updated_by = $user->id;
 
         if($book->save()){
             $data['success'] = 'success';
@@ -63,7 +65,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $result = Books::find($id);
+        $result = Books::with('created_by','updated_by')->find($id);
         return $result;
     }
 
@@ -87,6 +89,7 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = JWTAuth::parseToken()->toUser();
         $data = json_decode($request->getContent(), true);
         $book = Books::find($data['id']);
 
@@ -95,6 +98,7 @@ class BookController extends Controller
         $book->title = $data['title'];
         $book->author = $data['author'];
         $book->description = $data['description'];
+        $book->updated_by = $user->id;
 
         if($book->save()){
             $data['success'] = 'success';

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./books-index.component.css']
 })
 export class BooksIndexComponent implements OnInit {
+  title = "Daftar Buku";
   books: Books[];
   infoMsg: string;
   errorMsg: string;
@@ -46,6 +47,13 @@ export class BooksIndexComponent implements OnInit {
     // console.log(book);
     event.preventDefault();
     let link = ['book/update', book.id];
+    this.router.navigate(link);
+  }
+
+  detailBook(Event: MouseEvent, book: Books) {
+    // console.log(book);
+    event.preventDefault();
+    let link = ['book/detail', book.id];
     this.router.navigate(link);
   }
 

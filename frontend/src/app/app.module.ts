@@ -21,6 +21,7 @@ import { BooksAddComponent } from './components/books/books-add/books-add.compon
 import { BooksUpdateComponent } from './components/books/books-update/books-update.component';
 import { BooksServiceService } from './Services/books-service.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BooksDetailComponent } from './components/books/books-detail/books-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BooksComponent,
     BooksIndexComponent,
     BooksAddComponent,
-    BooksUpdateComponent
+    BooksUpdateComponent,
+    BooksDetailComponent
   ],
   imports: [
     BrowserModule,
