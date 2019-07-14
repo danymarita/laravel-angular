@@ -20,6 +20,8 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/balik-kalimat', 'HomeController@balikKalimat')->name('balik-kalimat');
 Route::post('/balik-kalimat-proses', 'HomeController@balikKalimatProses')->name('balik-kalimat-proses');
+Route::get('/test-logika', 'HomeController@testLogika')->name('test-logika');
+Route::post('/test-logika-proses', 'HomeController@testLogikaProses')->name('test-logika-proses');
 
 Route::group([
     'middleware' => ['cors','api'],

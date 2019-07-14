@@ -60,6 +60,9 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('test-logika') }}">Test Logika</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('balik-kalimat') }}">Balik Kalimat</a>
                         </li>
                         <li class="dropdown">
