@@ -1,0 +1,59 @@
+<div class="mt-4 col-8 offset-2">
+        <div class="card">
+            <div class="card-header">
+                {{ formTitle }}
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="alert alert-success" *ngIf="infoMsg">
+                        {{ infoMsg }}
+                    </div>
+                    <div class="alert alert-danger" *ngIf="errorMsg">
+                        {{ errorMsg }}
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" placeholder="Masukan Nama" class="form-control" [(ngModel)]="employee.name" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">NIP</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="nip" placeholder="Masukan NIP" class="form-control" [(ngModel)]="employee.nip" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Tempat Lahir</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="birth_place" placeholder="Masukan Tempat Lahir" class="form-control" [(ngModel)]="employee.birth_place" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Tgl. Lahir</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input class="form-control" placeholder="yyyy-mm-dd"
+                                        name="dob" [(ngModel)]="employee.dob" ngbDatepicker #d="ngbDatepicker" required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Alamat</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="address" [(ngModel)]="employee.address"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 offset-2">
+                            <button type="button" (click)="addEmployee()" class="btn btn-primary">Submit</button>
+                            <a href="#" (click)="goBack($event)" class="btn btn-warning ml-2">Kembali</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

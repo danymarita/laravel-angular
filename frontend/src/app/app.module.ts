@@ -22,6 +22,10 @@ import { BooksUpdateComponent } from './components/books/books-update/books-upda
 import { BooksServiceService } from './Services/books-service.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BooksDetailComponent } from './components/books/books-detail/books-detail.component';
+import { EmployeesIndexComponent } from './components/employees/employees-index/employees-index.component';
+import { EmployeesAddComponent } from './components/employees/employees-add/employees-add.component';
+import { EmployeesUpdateComponent } from './components/employees/employees-update/employees-update.component';
+import { EmployeesDetailComponent } from './components/employees/employees-detail/employees-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { BooksDetailComponent } from './components/books/books-detail/books-deta
     BooksIndexComponent,
     BooksAddComponent,
     BooksUpdateComponent,
-    BooksDetailComponent
+    BooksDetailComponent,
+    EmployeesIndexComponent,
+    EmployeesAddComponent,
+    EmployeesUpdateComponent,
+    EmployeesDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,55 @@
+<div class="row">
+        <div class="mt-4 col-12">
+            <div class="card">
+                <div class="card-header">{{ title }}</div>
+                <div class="card-body">
+                    <div class="alert alert-success" *ngIf="infoMsg">{{ infoMsg }}</div>
+                    <div class="alert alert-success" *ngIf="errorMsg">{{ infoMsg }}</div>
+                    <a [routerLink]="['/employee/add']" class="btn btn-primary mb-2">Tambah Karyawan</a>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIP</th>
+                            <th>TTL</th>
+                            <!-- <th>Summary</th> -->
+                            <!-- <th>Tgl. Input</th> -->
+                            <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let employee of employees; let i = index;">
+                                <td>{{ offset + i }}</td>
+                                <!-- <td>{{ book.isbn }}</td> -->
+                                <td><a href="#" (click)="detailEmployee($event, employee)">{{ employee.name }}</a></td>
+                                <td>{{ employee.nip }}</td>
+                                <td>{{ employee.birth_place }} / {{ employee.dob }}</td>
+                                <!-- <td>{{ book.description }}</td> -->
+                                <!-- <td>{{ book.created_at }}</td> -->
+                                <td>
+                                    <a href="#" (click)="editEmployee($event, employee)" class="btn btn-warning">Edit</a>
+                                    <form style="display: inline-block;">
+                                        <button type="button" (click)="deleteEmployee(employee)" class="btn btn-danger ml-1">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>  
+                            <tr>  
+                                <td align="center" colspan="6">
+                                    <div class="pull-right">  
+                                        <ngb-pagination [collectionSize]="collectionSize" 
+                                        [pageSize]="pageSize" 
+                                        [(page)]="page" 
+                                        [maxSize]="maxSize" 
+                                        [rotate]="true" 
+                                        [boundaryLinks]="boundaryLinks" 
+                                        (pageChange)="loadPage($event)"></ngb-pagination>  
+                                    </div>  
+                                </td>  
+                            </tr>  
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-// use DB;
 
-class BooksTableSeeder extends Seeder
+class EmployeesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,11 +16,12 @@ class BooksTableSeeder extends Seeder
  
     	for($i = 1; $i <= 50; $i++){
     	      // insert data ke table pegawai menggunakan Faker
-    		DB::table('books')->insert([
-                'isbn' => '1234-5678-910'.$i,
-    			'title' => $faker->sentence(3, true),
-    			'author' => $faker->name,
-                'description' => $faker->text(200),
+    		DB::table('employees')->insert([
+                'name' => $faker->name,
+    			'nip' => $faker->randomNumber(6, true),
+    			'birth_place' => $faker->city,
+                'dob' => $faker->date('Y-m-d', '1989-03-03'),
+                'address' => $faker->address,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
                 'created_by' => 1,

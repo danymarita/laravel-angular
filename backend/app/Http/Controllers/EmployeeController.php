@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Books;
+use App\Employee;
 use JWTAuth;
 
-class BookController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $result = Books::with('created_by','updated_by');
+        $result = Employee::with('created_by','updated_by');
         return $result->paginate(10);
     }
 
@@ -40,16 +40,17 @@ class BookController extends Controller
     {
         $user = JWTAuth::parseToken()->toUser();
         $data = json_decode($request->getContent(), true);
-        $book = new Books();
+        $employee = new Employee();
+        // dd($data['dob']);
+        $employee->name = $data['name'];
+        $employee->nip = $data['nip'];
+        $employee->birth_place = $data['birth_place'];
+        $employee->dob = $data['dob']['year'].'-'.$data['dob']['month'].'-'.$data['dob']['day'];
+        $employee->address = $data['address'];
+        $employee->created_by = $user->id;
+        $employee->updated_by = $user->id;
 
-        $book->isbn = $data['isbn'];
-        $book->title = $data['title'];
-        $book->author = $data['author'];
-        $book->description = $data['description'];
-        $book->created_by = $user->id;
-        $book->updated_by = $user->id;
-
-        if($book->save()){
+        if($employee->save()){
             $data['success'] = 'success';
         }else $data['success'] = 'error';
 
@@ -64,7 +65,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $result = Books::with('created_by','updated_by')->find($id);
+        $result = Employee::with('created_by','updated_by')->find($id);
         return $result;
     }
 
@@ -90,16 +91,16 @@ class BookController extends Controller
     {
         $user = JWTAuth::parseToken()->toUser();
         $data = json_decode($request->getContent(), true);
-        $book = Books::find($data['id']);
+        $employee = Employee::find($data['id']);
+        // $query = $employee->update($input);
+        $employee->name = $data['name'];
+        $employee->nip = $data['nip'];
+        $employee->birth_place = $data['birth_place'];
+        $employee->dob = $data['dob']['year'].'-'.$data['dob']['month'].'-'.$data['dob']['day'];
+        $employee->address = $data['address'];
+        $employee->updated_by = $user->id;
 
-        // $query = $book->update($input);
-        $book->isbn = $data['isbn'];
-        $book->title = $data['title'];
-        $book->author = $data['author'];
-        $book->description = $data['description'];
-        $book->updated_by = $user->id;
-
-        if($book->save()){
+        if($employee->save()){
             $data['success'] = 'success';
         }else $data['success'] = 'error';
 
@@ -114,16 +115,16 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $books = new Books();
+        $employee = new Employee();
 
-        $book = $books->find($id);
-        $query = $book->delete();
+        $employee = $employee->find($id);
+        $query = $employee->delete();
 
         if($query){
             $data['success'] = 'success';
         }else $data['success'] = 'error';
 
-        $data['data'] = $books->all();
+        $data['data'] = $employee->all();
 
         return $data;
     }

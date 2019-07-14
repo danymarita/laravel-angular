@@ -33,5 +33,6 @@ Route::group([
         Route::get('logout', 'APIController@logout');
         // Route::resource('book/{id}/update', 'BookController@update');
         Route::resource('book', 'BookController');
+        Route::resource('employee', 'EmployeeController');
     });
 });

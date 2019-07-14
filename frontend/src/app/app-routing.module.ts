@@ -10,6 +10,10 @@ import { BooksIndexComponent } from './components/books/books-index/books-index.
 import { BooksAddComponent } from './components/books/books-add/books-add.component';
 import { BooksUpdateComponent } from './components/books/books-update/books-update.component';
 import { BooksDetailComponent } from './components/books/books-detail/books-detail.component';
+import { EmployeesIndexComponent } from './components/employees/employees-index/employees-index.component';
+import { EmployeesAddComponent } from './components/employees/employees-add/employees-add.component';
+import { EmployeesUpdateComponent } from './components/employees/employees-update/employees-update.component';
+import { EmployeesDetailComponent } from './components/employees/employees-detail/employees-detail.component';
 
 
 const routes: Routes = [
@@ -40,7 +44,15 @@ const routes: Routes = [
   },
   { path: 'book/add', canActivate: [ AfterLoginService ], component: BooksAddComponent },
   { path: 'book/update/:id', canActivate: [ AfterLoginService ], component: BooksUpdateComponent },
-  { path: 'book/detail/:id', canActivate: [ AfterLoginService ], component: BooksDetailComponent }
+  { path: 'book/detail/:id', canActivate: [ AfterLoginService ], component: BooksDetailComponent },
+  {
+    path: 'employee', 
+    component: EmployeesIndexComponent,
+    canActivate: [AfterLoginService]
+  },
+  { path: 'employee/add', canActivate: [ AfterLoginService ], component: EmployeesAddComponent },
+  { path: 'employee/update/:id', canActivate: [ AfterLoginService ], component: EmployeesUpdateComponent },
+  { path: 'employee/detail/:id', canActivate: [ AfterLoginService ], component: EmployeesDetailComponent },
 ];
 
 @NgModule({
