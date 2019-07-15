@@ -80,6 +80,6 @@ class HomeController extends Controller
                 ->with('type', 'success')
                 ->with('kalimat_asli', $request->kalimat)
                 ->with('kalimat_balik', $kalimat_balik)
-    			->with('message', 'Kalimat yang Anda masukkan sudah dibalik.');
+    			->with('message', 'Kalimat yang Anda masukkan sudah dibalik.')->withInput();
     }
 }
